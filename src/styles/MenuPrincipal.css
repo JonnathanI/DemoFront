@@ -1,0 +1,142 @@
+/* src/styles/MenuPrincipal.css */
+
+/* ----------------------------------------------------
+   1. CONTENEDOR PRINCIPAL
+   ---------------------------------------------------- */
+.menu-container {
+    background-color: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    /* Animación de entrada */
+    animation: entrance-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.welcome-title {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px var(--color-secondary);
+}
+
+.level-info {
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    margin-bottom: 40px;
+}
+
+/* ----------------------------------------------------
+   2. ESTILOS DE LA CUADRÍCULA DE MENÚ
+   ---------------------------------------------------- */
+.menu-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas para los botones principales */
+}
+
+/* Estilos de botones generales (tomados de App.css, pero refinados aquí) */
+.menu-button {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    padding: 20px 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 0 var(--color-dark); /* Efecto 3D más prominente */
+    transition: all 0.15s ease-out;
+    width: 100%;
+}
+
+.menu-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 0 var(--color-dark);
+}
+
+.menu-button:active {
+    transform: translateY(4px); /* Simula el click */
+    box-shadow: 0 2px 0 var(--color-dark);
+}
+
+.menu-button .icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+/* ----------------------------------------------------
+   3. COLORES ESPECÍFICOS DE BOTÓN
+   ---------------------------------------------------- */
+
+.menu-button.play {
+    background-color: #2ECC71; /* Verde - Jugar */
+    box-shadow: 0 6px 0 #1B8C45;
+}
+
+.menu-button.shop {
+    background-color: #F39C12; /* Naranja - Tienda */
+    box-shadow: 0 6px 0 #A86A00;
+}
+
+.menu-button.profile {
+    background-color: var(--color-secondary); /* Azul - Perfil */
+    box-shadow: 0 6px 0 #0077B3;
+}
+
+/* ----------------------------------------------------
+   4. DETALLES DE PERFIL (Cerrar Sesión)
+   ---------------------------------------------------- */
+.profile-details {
+    /* Ocupa el espacio de un botón normal en la cuadrícula */
+    grid-column: span 1; 
+    position: relative;
+}
+
+/* El summary ya tiene el estilo .menu-button */
+.profile-details summary {
+    list-style: none; /* Oculta el marcador por defecto de <details> */
+    cursor: pointer;
+}
+
+.profile-options {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 20; /* Asegura que esté encima de todo */
+}
+
+.sub-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    color: var(--color-dark);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sub-button:hover {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+}
+
+.sub-button.logout {
+    font-weight: 700;
+    color: var(--color-primary);
+    border-top: 1px solid #eee;
+}
+
+.sub-button.logout:hover {
+    background-color: #FFE0E0; /* Rojo claro en hover */
+}

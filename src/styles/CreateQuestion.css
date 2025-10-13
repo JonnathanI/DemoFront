@@ -1,0 +1,318 @@
+/* src/styles/CreateQuestion.css */
+
+.create-question-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: #f7f9fc;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.question-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--color-secondary);
+}
+
+.form-section h3 {
+    color: var(--color-dark);
+    font-size: 1.4rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* --- Estilos Generales de Inputs --- */
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* --- SECCIÓN MEDIA --- */
+.media-upload-area {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    background-color: #fafafa;
+}
+
+.media-label {
+    cursor: pointer;
+    background-color: #eee;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.media-label:hover {
+    background-color: #e0e0e0;
+}
+
+.hidden-file-input {
+    display: none;
+}
+
+.file-name {
+    color: var(--color-primary);
+    font-weight: 700;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.media-preview-box {
+    margin-top: 15px;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.preview-audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.remove-media-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+/* --- SECCIÓN OPCIONES --- */
+.option-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.option-text-input {
+    flex-grow: 1;
+}
+
+.correct-option-input {
+    border-color: #2ECC71 !important;
+    background-color: #f0fff0;
+}
+
+.correct-toggle-button, .remove-option-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.correct-toggle-button {
+    background-color: #f39c12;
+    color: white;
+}
+
+.correct-toggle-button.is-correct {
+    background-color: #2ECC71;
+}
+
+.remove-option-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+}
+
+.add-option-button {
+    width: 100%;
+    padding: 12px;
+    border: 2px dashed #3498DB;
+    background-color: transparent;
+    color: #3498DB;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.add-option-button:hover {
+    background-color: #3498DB;
+    color: white;
+}
+
+/* --- SECCIÓN METADATOS --- */
+.points-selection {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.points-button {
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.points-button:hover {
+    border-color: #aaa;
+}
+
+.points-button.selected-points {
+    background-color: var(--color-secondary);
+    color: white;
+    border-color: var(--color-secondary);
+    box-shadow: 0 4px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* --- Botones de Acción Final --- */
+.form-action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.submit-question-button, .cancel-button {
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: opacity 0.3s, transform 0.1s;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    width: 200px;
+}
+
+.submit-question-button {
+    background-color: #FF5757; /* Rojo Primario */
+    color: white;
+}
+
+.submit-question-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.cancel-button {
+    background-color: #ecf0f1;
+    color: #333;
+    box-shadow: 0 3px 0 #bdc3c7;
+}
+
+.submit-question-button:active:not(:disabled), .cancel-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.form-error-message {
+    color: #e74c3c;
+    background-color: #fde4e4;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .create-question-container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    
+    .option-input-group {
+        flex-wrap: wrap;
+    }
+    
+    .option-text-input {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .correct-toggle-button, .remove-option-button {
+        flex-grow: 1;
+    }
+
+    .form-action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .submit-question-button, .cancel-button {
+        width: 100%;
+    }
+}

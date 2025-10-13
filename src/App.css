@@ -1,0 +1,100 @@
+/* src/App.css */
+
+/* ----------------------------------------------------
+   1. VARIABLES Y TIPOGRAFÍA (Google Fonts)
+   ---------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&family=Balsamiq+Sans:wght@700&display=swap');
+
+:root {
+    /* Paleta de Colores VIBRANTES */
+    --color-primary: #FF5757; /* Rojo Fuego / Energía */
+    --color-secondary: #00BFFF; /* Azul Cielo / Inteligencia */
+    --color-accent: #FFD700; /* Amarillo Oro / Recompensa */
+    --color-background: #F0F8FF; /* Azul Muy Claro */
+    --color-dark: #333333;
+
+    /* Tipografía */
+    --font-main: 'Poppins', sans-serif; /* Limpio y moderno */
+    --font-display: 'Balsamiq Sans', cursive; /* Juguetón para títulos */
+
+    /* Altura Navbar (Añadido por convención) */
+    --navbar-height: 70px; 
+}
+
+/* ----------------------------------------------------
+   2. ESTILOS GLOBALES Y CONFIGURACIÓN DEL SCROLL
+   ---------------------------------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+html, #root { /* Aseguramos que la base ocupe el 100% de la ventana */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    margin: 0;
+    padding: 0;
+
+    /* ✅ CORRECCIÓN 1: Quitar el centrado para permitir layout normal */
+    display: block; 
+    justify-content: initial;
+    align-items: initial;
+
+    /* ✅ CORRECCIÓN 2: Permitir scroll vertical a nivel de ventana */
+    overflow-y: auto; 
+    overflow-x: hidden; /* Ocultar scroll horizontal innecesario */
+    
+    /* El body solo necesita un min-height para empezar */
+    min-height: 100vh;
+    position: relative; 
+}
+
+/* ----------------------------------------------------
+   3. ANIMACIONES CLAVE
+   ---------------------------------------------------- */
+/* Efecto de 'Pop' al hacer click/hover */
+.pop-on-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-out;
+}
+
+/* ----------------------------------------------------
+   4. ESTILOS DE BOTÓN GENÉRICOS (GAMIFICACIÓN)
+   ---------------------------------------------------- */
+button {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 0 var(--color-dark); /* Efecto 3D / Presionar */
+    transition: all 0.1s ease-out;
+}
+
+button:hover {
+    transform: scale(1.02);
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--color-dark);
+}
+
+button:disabled {
+    background-color: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}

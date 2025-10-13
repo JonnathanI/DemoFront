@@ -1,0 +1,130 @@
+/* src/styles/Navbar.css */
+
+/* ----------------------------------------------------
+   1. ESTRUCTURA DE LA BARRA DE NAVEGACIÓN
+   ---------------------------------------------------- */
+.navbar-header {
+    /* CLAVE: Fija la barra en la parte superior */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    background-color: var(--color-dark); /* Fondo oscuro */
+    color: white;
+    
+    padding: 10px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100; /* Asegura que esté sobre todo */
+
+    display: flex;
+    justify-content: space-between; /* Espacio entre logo, nav y usuario */
+    align-items: center;
+}
+
+.navbar-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-accent); /* Amarillo brillante */
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-logo .icon {
+    margin-right: 5px;
+}
+
+/* ----------------------------------------------------
+   2. ESTILOS DE NAVEGACIÓN Y BOTONES
+   ---------------------------------------------------- */
+.navbar-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button, .user-summary {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.nav-button:hover, .user-summary:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Efecto hover sutil */
+    transform: translateY(-1px);
+}
+
+.nav-button .icon {
+    margin-right: 5px;
+}
+
+/* ----------------------------------------------------
+   3. MENÚ DESPLEGABLE DE PERFIL
+   ---------------------------------------------------- */
+
+.profile-details {
+    position: relative;
+    /* Elimina el marcador de <details> */
+    list-style: none;
+}
+
+/* Ocultar el marcador cuando no está abierto */
+.profile-details summary {
+    list-style: none;
+}
+.profile-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.user-summary {
+    /* Asegura que el summary tenga el estilo de botón */
+    display: block;
+}
+
+.profile-options {
+    position: absolute;
+    top: 100%; /* Posiciona debajo del summary */
+    right: 0;
+    width: 200px;
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    z-index: 110;
+}
+
+.sub-button {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+    color: var(--color-dark);
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.sub-button:hover {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.sub-button.logout {
+    font-weight: 700;
+    color: var(--color-primary);
+    border-top: 1px solid #eee;
+}
+
+.sub-button.logout:hover {
+    background-color: var(--color-primary);
+    color: white;
+}

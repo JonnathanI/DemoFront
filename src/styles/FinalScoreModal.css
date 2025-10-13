@@ -1,0 +1,87 @@
+/* 1. Fondo semi-transparente */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegúrate de que esté por encima de todo */
+}
+
+/* 2. Contenido del modal */
+.modal-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: fadeIn 0.3s ease-out; /* Simple animación de entrada */
+}
+
+.modal-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: #4CAF50; /* Un color vibrante */
+    margin-bottom: 20px;
+}
+
+/* 3. Área de animación de puntuación */
+.score-animation-area {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.trophy-icon {
+    font-size: 3em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.final-score-text {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.score-number {
+    font-size: 3em;
+    font-weight: 900;
+    color: #FF9800; /* Color llamativo para la puntuación */
+    display: block;
+    line-height: 1;
+}
+
+.encouragement {
+    margin-top: 15px;
+    color: #666;
+    font-style: italic;
+}
+
+/* 4. Botón */
+.modal-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+.modal-button:hover {
+    background-color: #45a049;
+}
+
+/* Keyframe para la animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

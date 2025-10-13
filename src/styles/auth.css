@@ -1,0 +1,73 @@
+/* src/styles/Auth.css */
+
+/* ----------------------------------------------------
+   1. CONTENEDOR DE AUTENTICACIÓN (LOGIN/REGISTER)
+   ---------------------------------------------------- */
+.auth-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  /* Posición y z-index ya no son estrictamente necesarios, pero se mantienen para la estructura */
+  position: relative; 
+  z-index: 10; 
+  animation: entrance-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes entrance-pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.auth-container h2 {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px var(--color-secondary);
+}
+
+/* ----------------------------------------------------
+   2. ESTILOS DE INPUTS Y ENLACES
+   ---------------------------------------------------- */
+.auth-container input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 3px solid var(--color-secondary);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-container input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 87, 87, 0.6);
+}
+
+.auth-container button {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.error-message {
+  color: var(--color-primary);
+  margin-top: 15px;
+  font-weight: 700;
+}
+
+.auth-container a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+  color: var(--color-primary);
+}

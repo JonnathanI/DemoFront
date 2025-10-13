@@ -1,0 +1,122 @@
+/* --- Variables específicas del Juego (Asegúrate que estas estén en App.css también) --- */
+:root {
+    --correct-color: #28a745;
+    --incorrect-color: #dc3545;
+    --card-background: #ffffff;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Usar min-height para que el contenido principal maneje el layout */
+    min-height: calc(100vh - var(--navbar-height)); 
+    padding: 20px;
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    /* Asegura que el contenido empiece después de la navbar */
+    margin-top: var(--navbar-height); 
+    width: 100%;
+}
+
+/* --- Temporizador y Puntuación --- */
+.game-header {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.progress, .score {
+    padding: 8px 15px;
+    border-radius: 8px;
+    background-color: var(--card-background);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Tarjeta de Pregunta Principal --- */
+.question-card {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.question-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* --- Contenedor de Opciones --- */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* --- Botones de Opción --- */
+.option-button {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid var(--color-secondary);
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--color-dark);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    /* Sobrescribe el estilo genérico de button */
+    box-shadow: none; 
+}
+
+.option-button:hover:not(:disabled) {
+    background-color: var(--color-secondary);
+    color: white;
+    transform: none; /* Deshace el pop-on-hover */
+}
+
+.option-button.selected {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Estilos de verificación */
+.option-button.selected-correct {
+    background-color: var(--correct-color);
+    color: white;
+    border-color: var(--correct-color);
+    pointer-events: none;
+    font-weight: bold;
+}
+
+.option-button.selected-incorrect {
+    background-color: var(--incorrect-color);
+    color: white;
+    border-color: var(--incorrect-color);
+    pointer-events: none;
+}
+
+/* --- Botones de Acción (Comprobar/Siguiente) --- */
+.action-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.check-button, .next-button {
+    /* Usa el estilo genérico de button, pero puedes personalizar */
+    width: 50%;
+    max-width: 300px;
+    font-size: 1.2rem;
+}

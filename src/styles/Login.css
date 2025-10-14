@@ -1,0 +1,121 @@
+/* Contenedor Principal */
+.auth-container-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6; /* Fondo gris suave */
+    padding: 1rem;
+}
+
+/* Tarjeta/Formulario Base */
+.auth-card {
+    width: 100%;
+    max-width: 28rem; /* Ancho medio */
+    background-color: white;
+    padding: 2.5rem; 
+    border-radius: 1.5rem; /* Esquinas muy redondeadas */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* Sombra 2XL */
+    transition: all 0.5s;
+}
+
+/* Título */
+.auth-card h2 {
+    font-size: 2.25rem; 
+    font-weight: 900; 
+    color: #1f2937; 
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: -0.025em; 
+}
+
+/* Subtítulo */
+.auth-card p {
+    text-align: center;
+    color: #6b7280; 
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* Campo de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.input-group svg {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af; /* Color de icono */
+}
+.input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-left: 2.5rem; 
+    border: 1px solid #d1d5db; 
+    border-radius: 0.75rem; 
+    transition: all 0.15s;
+}
+.input-field:focus {
+    outline: none;
+    border-color: #ef4444; /* Rojo al enfocar */
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5); 
+}
+
+/* Botón de Login (Rojo/Rosa Vibrante) */
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #dc2626, #ec4899); 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.btn-login:hover:not([disabled]) {
+    background-image: linear-gradient(to right, #b91c1c, #d94677); 
+    transform: scale(1.01);
+}
+
+.btn-login[disabled] {
+    background-image: none;
+    background-color: #9ca3af; 
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Enlace a Registro */
+.auth-card .link-register {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+    color: #4b5563;
+}
+.auth-card .link-register a {
+    color: #dc2626; 
+    font-weight: 600;
+    margin-left: 0.25rem;
+    border-bottom: 1px solid #fca5a5;
+    transition: all 0.15s;
+}
+.auth-card .link-register a:hover {
+    color: #b91c1c;
+    border-bottom-color: #dc2626;
+}
+/* Mensaje de Error */
+.error-message {
+    margin-top: 1rem;
+    text-align: center;
+    color: #ef4444; 
+    background-color: #fef2f2; 
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #fecaca; 
+}

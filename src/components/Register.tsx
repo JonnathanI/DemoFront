@@ -1,121 +1,128 @@
-// src/components/Register.tsx
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../services/authService';
-import useAuthStore from '../store/authStore';
+import { FaUser, FaEnvelope, FaLock, FaUserTag, FaCode } from 'react-icons/fa';
+import '../styles/Register.css'; // Asegúrate de que esta ruta sea correcta
+
+// Componente auxiliar para inputs
+// NOTA: Eliminamos la lógica compleja de React.cloneElement con 'style' para evitar el TS2769
+const InputField: React.FC<{ 
+    name: string, 
+    placeholder: string, 
+    type: string, 
+    icon: React.ReactElement,
+    value: string,
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    required?: boolean
+}> = ({ name, placeholder, type, icon, value, handleChange, required = false }) => (
+    // Aplicamos la clase CSS del grupo para el posicionamiento del icono
+    <div className="input-group-register">
+        {/* El CSS se encargará de posicionar el SVG dentro de .input-group-register */}
+        {icon} 
+        <input
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={handleChange}
+            required={required}
+            className="input-field-register"
+        />
+    </div>
+);
+
 
 const Register: React.FC = () => {
-  const [data, setData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    fullName: '',
-    adminCode: '', // Campo para el código de súper usuario
-  });
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  
-  const navigate = useNavigate();
-  const authLogin = useAuthStore((state) => state.login);
+  const [data, setData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    fullName: '',
+    adminCode: '', 
+  });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+  const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    try {
-      // Crear objeto de registro limpiando el adminCode si está vacío
-      const registerData = {
-          username: data.username,
-          email: data.email,
-          password: data.password,
-          fullName: data.fullName || undefined, // undefined si está vacío
-          adminCode: data.adminCode || undefined, // undefined si está vacío
-      }
-      
-      // Llamar al servicio de registro
-      const response = await register(registerData); 
-      
-      // NOTA: Asumiendo que el backend te permite logearte inmediatamente después
-      // y que la respuesta de registro incluye el token.
-      // Si el backend no devuelve el token, deberías redirigir a Login y no llamar authLogin.
-      
-      // Por simplicidad (y asumiendo que el backend se ajustará o que te conformas con la User Entity)
-      // Redirigimos al Login. Si quieres login automático, debes ajustar el backend.
-      
-      alert(`¡Registro exitoso! Usuario creado con rol: ${response.role || 'USER'}. Por favor, inicia sesión.`);
-      navigate('/login');
+    try {
+      const registerData = {
+          username: data.username,
+          email: data.email,
+          password: data.password,
+          fullName: data.fullName || undefined, 
+          adminCode: data.adminCode || undefined, 
+      }
+      
+      await register(registerData); 
+      
+      alert(`¡Registro exitoso! Ahora puedes iniciar sesión.`);
+      navigate('/login');
 
-    } catch (err: any) {
-      setError(err.message || 'Fallo en el registro.');
-    } finally {
-      setLoading(false);
-    }
-  };
+    } catch (err: any) {
+      setError(err.message || 'Fallo en el registro. Intenta con otro usuario o email.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  return (
-    <div className="auth-container">
-      <h2>Registro</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Nombre de Usuario"
-          value={data.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={data.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña (mínimo 6 caracteres)"
-          value={data.password}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="fullName"
-          placeholder="Nombre Completo (Opcional)"
-          value={data.fullName}
-          onChange={handleChange}
-        />
-        
-        {/* Campo Opcional para Super Usuario */}
-        <p style={{ marginTop: '15px', marginBottom: '5px', fontSize: '0.9em' }}>
-            ¿Tienes un código de administrador? (Opcional)
-        </p>
-        <input
-          type="text"
-          name="adminCode"
-          placeholder="Código de Super Usuario"
-          value={data.adminCode}
-          onChange={handleChange}
-        />
+  return (
+    // CLASE CSS: auth-container-register
+    <div className="auth-container-register">
+      
+      {/* CLASE CSS: auth-card-register */}
+      <div className="auth-card-register">
+        
+        <h2>¡Únete al Desafío! ✨</h2>
+        <p>Crea tu cuenta en segundos y empieza a jugar.</p>
 
-        <button type="submit" disabled={loading} style={{ marginTop: '20px' }}>
-          {loading ? 'Registrando...' : 'Registrarme'}
-        </button>
-      </form>
-      {error && <p className="error-message">{error}</p>}
-      <p>
-        ¿Ya tienes cuenta? <a href="/login">Inicia Sesión</a>
-      </p>
-    </div>
-  );
+        <form onSubmit={handleSubmit}>
+          
+          <InputField name="username" placeholder="Nombre de Usuario" type="text" icon={<FaUser />} value={data.username} handleChange={handleChange} required />
+          <InputField name="email" placeholder="Email" type="email" icon={<FaEnvelope />} value={data.email} handleChange={handleChange} required />
+          <InputField name="password" placeholder="Contraseña (mín. 6 car.)" type="password" icon={<FaLock />} value={data.password} handleChange={handleChange} required />
+          <InputField name="fullName" placeholder="Nombre Completo (Opcional)" type="text" icon={<FaUserTag />} value={data.fullName} handleChange={handleChange} />
+          
+          {/* Sección de Administrador Opcional */}
+          <div className="admin-section">
+            <p className="admin-label">
+              ¿Tienes un código de administrador? (Opcional)
+            </p>
+            <InputField name="adminCode" placeholder="Código de Super Usuario" type="text" icon={<FaCode />} value={data.adminCode} handleChange={handleChange} />
+          </div>
+
+          {/* Botón de Registrarme */}
+          <button 
+            type="submit" 
+            disabled={loading}
+            className="btn-register" // CLASE CSS: btn-register
+          >
+            {loading ? 'Registrando...' : 'Registrarme'}
+          </button>
+        </form>
+        
+        {/* Mensaje de Error */}
+        {error && <p className="error-message">{error}</p>}
+
+        {/* Enlace a Login */}
+        <p className="link-login"> {/* CLASE CSS: link-login */}
+          ¿Ya tienes cuenta? 
+          <a href="/login">
+            Inicia Sesión
+          </a>
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default Register;

@@ -1,0 +1,228 @@
+/* ========================================================== */
+/* ESTILOS BASE: ADMIN DASHBOARD Y CONTENEDOR DE GESTIÓN */
+/* ========================================================== */
+.admin-container {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.admin-title {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-add {
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ========================================================== */
+/* ESTILOS DE LA TABLA DE USUARIOS */
+/* ========================================================== */
+.table-container {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.user-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.actions-cell {
+    width: 120px;
+    text-align: center;
+}
+
+.btn-action {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.btn-action.edit {
+    color: #ffc107; /* Amarillo */
+}
+.btn-action.edit:hover {
+    color: #e0a800;
+}
+
+.btn-action.delete {
+    color: #dc3545; /* Rojo */
+}
+.btn-action.delete:hover {
+    color: #bd2130;
+}
+
+/* ========================================================== */
+/* ESTILOS DE ESTADO (Loading, Error) */
+/* ========================================================== */
+.loading-container, .error-container {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.error-message {
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================================== */
+/* ESTILOS PARA EL OVERLAY (Reemplazo de Modal) */
+/* ========================================================== */
+
+.modal-overlay {
+    /* Ocupa toda la pantalla */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Fondo semi-transparente y oscuro */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Asegura que esté por encima de todo */
+    z-index: 1000; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px; /* Tamaño máximo razonable */
+    position: relative;
+    /* Animación simple */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-wrapper h3 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo para los formularios y botones de acción en el modal */
+.form-edit label, .form-create label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-edit input, .form-edit select,
+.form-create input, .form-create select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}

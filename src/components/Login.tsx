@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../services/authService';
+// 💡 IMPORTAR LA FUNCIÓN NUEVA
+import { login, loginWithGoogle } from '../services/authService';
 import useAuthStore from '../store/authStore';
+// 💡 IMPORTS AÑADIDOS PARA GOOGLE
+import { GoogleLogin, type CredentialResponse } from '@react-oauth/google'; 
 import { FaUserCircle, FaLock } from 'react-icons/fa';
 import '../styles/Login.css'; // 💡 Importación del CSS tradicional
 
@@ -14,6 +17,7 @@ const Login: React.FC = () => {
     const navigate = useNavigate();
     const authLogin = useAuthStore((state) => state.login);
 
+    // --- Lógica de Login Normal (EXISTENTE) ---
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
@@ -31,6 +35,35 @@ const Login: React.FC = () => {
         }
     };
 
+    // ==========================================================
+    // 💡 LÓGICA DE LOGIN CON GOOGLE (NUEVA)
+    // ==========================================================
+    const handleGoogleSuccess = async (response: CredentialResponse) => {
+        const googleCredential = response.credential;
+        if (!googleCredential) {
+            setError('Error: No se recibió credencial de Google.');
+            return;
+        }
+        // Usamos el mismo estado de carga para ambos logins
+        setLoading(true); 
+        setError('');
+
+        try {
+            const authResponse = await loginWithGoogle(googleCredential);
+            authLogin(authResponse);
+            navigate('/dashboard'); 
+        } catch (err: any) {
+            setError(err.message || 'Fallo la autenticación con Google. Inténtalo de nuevo.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleGoogleFailure = () => {
+        setError('El inicio de sesión con Google falló.');
+    };
+
+    // --- RENDERIZADO DEL COMPONENTE ---
     return (
         // Usa la clase CSS del contenedor
         <div className="auth-container-login">
@@ -82,7 +115,23 @@ const Login: React.FC = () => {
                 {/* Mensaje de Error */}
                 {error && <p className="error-message">{error}</p>}
                 
-                {/* 🔑 NUEVO: ENLACE A RECUPERACIÓN DE CONTRASEÑA */}
+                {/* Separador "O" */}
+                <div className="separator-text">O</div>
+                
+                {/* 💡 BOTÓN DE GOOGLE (AÑADIDO) */}
+                <div className="google-login-wrapper">
+                    <GoogleLogin
+                        onSuccess={handleGoogleSuccess}
+                        onError={handleGoogleFailure}
+                        theme="outline" 
+                        text="continue_with"
+                        shape="square" 
+                        width="100%" 
+                        type="standard"
+                    />
+                </div>
+                
+                {/* 🔑 ENLACE A RECUPERACIÓN DE CONTRASEÑA */}
                 <p className="link-forgot-password">
                     <a href="/forgot-password">
                         ¿Olvidaste tu contraseña?

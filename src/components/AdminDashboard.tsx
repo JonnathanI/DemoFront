@@ -1,5 +1,3 @@
-// src/components/AdminDashboard.tsx
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
@@ -32,11 +30,11 @@ const AdminDashboard: React.FC = () => {
                     onClick={() => navigate('/admin/users')}
                 >
                     <span className="icon">🧑‍💻</span>
-                    <h2>Ver Usuarios</h2>
-                    <p>Gestiona y revisa el progreso de los jugadores.</p>
+                    <h2>Gestión de Usuarios</h2> {/* Título actualizado para claridad */}
+                    <p>Crea, edita o elimina cuentas de usuario.</p>
                 </button>
-                
-                {/* Acción 3: Tienda (Acceso directo desde el panel) */}
+
+                {/* Acción 3: Gestión de Tienda */}
                 <button 
                     className="admin-action-button shop-access"
                     onClick={() => navigate('/shop')}

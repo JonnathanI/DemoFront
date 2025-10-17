@@ -9,7 +9,13 @@ import CreateQuestion from './pages/CreateQuestion';
 import StartGame from './components/StartGame';
 import GameSession from './pages/GameSession';
 
-// 💡 IMPORTAR LOS NUEVOS COMPONENTES
+// 💡 Importar el nuevo componente de Gestión de Usuarios
+import AdminUserManagement from './components/AdminUserManagement';
+
+// 💡 Importar el NUEVO componente de Perfil
+import Profile from './components/Profile'; // 👈 RUTA ASUMIDA: src/pages/Profile.tsx
+
+// Componentes de autenticación
 import ForgotPasswordScreen from './components/ForgotPasswordScreen';
 import ResetPasswordScreen from './components/ResetPasswordScreen';
 
@@ -51,7 +57,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 
-                {/* 🔑 NUEVAS RUTAS PARA RECUPERACIÓN DE CONTRASEÑA */}
+                {/* 🔑 RUTAS PARA RECUPERACIÓN DE CONTRASEÑA */}
                 <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
                 <Route path="/reset-password" element={<ResetPasswordScreen />} />
 
@@ -60,9 +66,15 @@ function App() {
                 {/* Dashboard (Menu Principal) */}
                 <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
                 
+                {/* 💡 RUTA DE PERFIL (NUEVA) */}
+                <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+
                 {/* Generar Pregunta (Administrador) */}
                 <Route path="/admin/create-question" element={<ProtectedRoute element={<CreateQuestion />} />} />
                 
+                {/* 💡 RUTA DE GESTIÓN DE USUARIOS (Administrador) */}
+                <Route path="/admin/users" element={<ProtectedRoute element={<AdminUserManagement />} />} />
+
                 {/* 1. RUTA DE SELECCIÓN DE DIFICULTAD */}
                 <Route path="/game" element={<ProtectedRoute element={<StartGame />} />} />
                 
